@@ -17,3 +17,4 @@ I want to see what happens in the case of memory exaustion in azure as described
 [2]: https://azure.microsoft.com/en-us/blog/deploy-to-azure-button-for-azure-websites-2/
 [3]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 [4]: https://azure.microsoft.com/en-us/blog/auto-healing-windows-azure-web-sites/
+[5]: https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Auto-Healing-an-Azure-App-Service
