@@ -11,43 +11,43 @@ namespace Workshop.MemoryPressure
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            SimpleTextLog.WriteData(Server.MapPath(_path), "Application_Start");
+            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_Start");
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            SimpleTextLog.WriteData(Server.MapPath(_path), "Session_Start-" + Session.SessionID);
+            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Session_Start-" + Session.SessionID);
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            SimpleTextLog.WriteData(Server.MapPath(_path), "Application_BeginRequest-" + Request.RawUrl);
+            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_BeginRequest-" + Request.RawUrl);
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
-            SimpleTextLog.WriteData(Server.MapPath(_path), "Application_AuthenticateRequest");
+            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_AuthenticateRequest");
         }
 
         protected void Application_EndRequest(object sender, EventArgs e)
         {
-            SimpleTextLog.WriteData(Server.MapPath(_path), "Application_EndRequest-" + Request.RawUrl);
+            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_EndRequest-" + Request.RawUrl);
         }
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            SimpleTextLog.WriteData(Server.MapPath(_path), "Application_Error-" + Session.SessionID);
+            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_Error-" + Session.SessionID);
         }
 
         protected void Session_End(object sender, EventArgs e)
         {
-            SimpleTextLog.WriteData(Server.MapPath(_path), "Session_End-" + Session.SessionID);
+            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Session_End-" + Session.SessionID);
         }
 
         protected void Application_End(object sender, EventArgs e)
         {
-            SimpleTextLog.WriteData(Server.MapPath(_path), "Application_End-" + HostingEnvironment.ShutdownReason);
+            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_End-" + HostingEnvironment.ShutdownReason);
         }
     }
 }

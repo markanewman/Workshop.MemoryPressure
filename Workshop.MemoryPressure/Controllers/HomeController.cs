@@ -24,11 +24,12 @@ namespace Workshop.MemoryPressure.Controllers
         [HttpPost]
         public ActionResult IncreasePressure()
         {
-            hash[Guid.NewGuid()] = new byte[_pressure];
+            var pressure = new byte[_pressure];
+            for (int i = 0; i < pressure.Length; i++)
+                pressure[i] = (byte)(i % 128);
+            hash[Guid.NewGuid()] = pressure;
 
-            decimal pressure = GC.GetTotalMemory(false) / 1024 / 1024.0M;
-
-            return View("~/Views/Home/Index.cshtml", pressure);
+            return RedirectToAction("Index");
         }
 
     }
