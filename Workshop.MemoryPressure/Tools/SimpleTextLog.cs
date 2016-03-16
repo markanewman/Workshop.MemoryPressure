@@ -19,6 +19,10 @@ namespace Workshop.MemoryPressure.Tools
             
             var line = string.Join(" ", site,instance, now, data);
 
+            var dir = Path.GetDirectoryName(path);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
             using (var writer = new StreamWriter(path, true)) 
                 writer.WriteLine(line);
         }
