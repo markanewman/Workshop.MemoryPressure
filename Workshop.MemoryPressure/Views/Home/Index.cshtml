@@ -1,4 +1,4 @@
-﻿@model decimal
+﻿@model Workshop.MemoryPressure.Models.Index
 @{
     Layout = null;
 }
@@ -12,7 +12,8 @@
 </head>
 <body>
     <a href="~/Logs/Log.txt">Log</a><br />
-    current pressure: @Model<br />
+    current pressure: @Model.Pressure<br />
+    current instance: @Model.ShortId<br />
     @using (Html.BeginForm("IncreasePressure", "Home"))
     {
         <input type="submit" value="IncreasePressure" />

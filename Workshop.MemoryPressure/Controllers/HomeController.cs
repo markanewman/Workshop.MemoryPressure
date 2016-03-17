@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using Workshop.MemoryPressure.Models;
 
 namespace Workshop.MemoryPressure.Controllers
 {
@@ -16,9 +15,13 @@ namespace Workshop.MemoryPressure.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            decimal pressure = GC.GetTotalMemory(false) / 1024 / 1024.0M;
+            var model = new Index()
+            {
+                Pressure = GC.GetTotalMemory(false) / 1024 / 1024.0M,
+                ShortId = Environment.GetEnvironmentVariable("WEBSITE_INSTANCE_ID") ?? "000000"
+            };
 
-            return View(pressure);
+            return View(model);
         }
 
         [HttpPost]
