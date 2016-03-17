@@ -59,6 +59,21 @@
           }
         },
         {
+          "apiVersion": "2014-06-01",
+          "name": "logs",
+          "type": "config",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+          ],
+          "properties": {
+            "applicationLogs": {
+              "fileSystem": {
+                "level": "Verbose"
+              }
+            }
+          }
+        },
+        {
           "apiVersion": "2015-04-01",
           "name": "web",
           "type": "sourcecontrols",

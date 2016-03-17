@@ -9,5 +9,6 @@ namespace Workshop.MemoryPressure.Models
     {
         public decimal Pressure { get; set; }
         public string ShortId { get; set; }
+        public string KuduLink { get; set; }
     }
 }

@@ -15,10 +15,14 @@ namespace Workshop.MemoryPressure.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            var name = Environment.GetEnvironmentVariable("WEBSITE_SITE_NAME");
+            var instance = Environment.GetEnvironmentVariable("WEBSITE_INSTANCE_ID");
+
             var model = new Index()
             {
                 Pressure = GC.GetTotalMemory(false) / 1024 / 1024.0M,
-                ShortId = (Environment.GetEnvironmentVariable("WEBSITE_INSTANCE_ID") ?? "000000").Substring(0,6)
+                ShortId = (instance ?? "000000").Substring(0, 6),
+                KuduLink = name == null ? null : string.Format("https://{0}.scm.azurewebsites.net/DebugConsole", name)
             };
 
             return View(model);

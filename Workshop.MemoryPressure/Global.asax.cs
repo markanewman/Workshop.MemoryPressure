@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Web.Hosting;
 using System.Web.Routing;
-using Workshop.MemoryPressure.Tools;
 
 namespace Workshop.MemoryPressure
 {
@@ -9,45 +9,45 @@ namespace Workshop.MemoryPressure
     {
         private const string _path = "~/Logs/log.txt";
 
-        protected void Application_Start(object sender, EventArgs e)
+        protected void Application_Start()
         {
-            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_Start");
+            Trace.WriteLine("Application_Start");
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
-        protected void Session_Start(object sender, EventArgs e)
+        protected void Session_Start()
         {
-            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Session_Start-" + Session.SessionID);
+            Trace.WriteLine("Session_Start-" + Session.SessionID);
         }
 
-        protected void Application_BeginRequest(object sender, EventArgs e)
+        protected void Application_BeginRequest()
         {
-            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_BeginRequest-" + Request.RawUrl);
+            Trace.WriteLine("Application_BeginRequest-" + Request.RawUrl);
         }
 
-        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        protected void Application_AuthenticateRequest()
         {
-            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_AuthenticateRequest");
+            Trace.WriteLine("Application_AuthenticateRequest");
         }
 
-        protected void Application_EndRequest(object sender, EventArgs e)
+        protected void Application_EndRequest()
         {
-            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_EndRequest-" + Request.RawUrl);
+            Trace.WriteLine("Application_EndRequest-" + Request.RawUrl);
         }
 
-        protected void Application_Error(object sender, EventArgs e)
+        protected void Application_Error()
         {
-            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_Error-" + Session.SessionID);
+            Trace.WriteLine("Application_Error-" + Session.SessionID);
         }
 
-        protected void Session_End(object sender, EventArgs e)
+        protected void Session_End()
         {
-            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Session_End-" + Session.SessionID);
+            Trace.WriteLine("Session_End-" + Session.SessionID);
         }
 
-        protected void Application_End(object sender, EventArgs e)
+        protected void Application_End()
         {
-            SimpleTextLog.WriteData(() => Server.MapPath(_path), () => "Application_End-" + HostingEnvironment.ShutdownReason);
+            Trace.WriteLine("Application_End-" + HostingEnvironment.ShutdownReason);
         }
     }
 }

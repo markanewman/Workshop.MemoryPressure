@@ -11,7 +11,10 @@
     <title>Workshop.MemoryPressure</title>
 </head>
 <body>
-    <a href="~/Logs/Log.txt">Log</a><br />
+    @if (Model.KuduLink != null)
+    {
+        <a href="@Model.KuduLink">Kudu</a><br />
+    }
     current pressure: @Model.Pressure<br />
     current instance: @Model.ShortId<br />
     @using (Html.BeginForm("IncreasePressure", "Home"))
