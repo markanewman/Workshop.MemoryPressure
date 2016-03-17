@@ -18,7 +18,7 @@ namespace Workshop.MemoryPressure.Controllers
             var model = new Index()
             {
                 Pressure = GC.GetTotalMemory(false) / 1024 / 1024.0M,
-                ShortId = Environment.GetEnvironmentVariable("WEBSITE_INSTANCE_ID") ?? "000000"
+                ShortId = (Environment.GetEnvironmentVariable("WEBSITE_INSTANCE_ID") ?? "000000").Substring(0,6)
             };
 
             return View(model);
