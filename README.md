@@ -25,3 +25,4 @@ I want to see what happens in the case of memory exaustion in azure as described
 [8]: https://azure.microsoft.com/en-us/documentation/articles/resource-group-portal/#deploying-a-custom-template
 [9]: http://microsoftazurewebsitescheatsheet.info/
 [10]: https://github.com/projectkudu/slingshot
+[11]: https://resources.azure.com/
