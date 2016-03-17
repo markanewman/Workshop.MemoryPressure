@@ -12,7 +12,15 @@ I want to see what happens in the case of memory exaustion in azure as described
 1. I should see server restarts in some log.
 1. I want the server to self heal as described [here][4].
 1. I should be able to deploy automaticaly to Azure as described [here][2].
-1. I should have 2 servers in round robin form as described [here][9].
+1. I should have 3 servers in round robin form as described [here][9].
+
+## Observations
+1. Site -> Tools -> Process Explorer best matches GC.GetTotalMemory. The "Memory Working set" and the "Memory Percentage" graphs seem to be one instance only. Same with Kudu.
+1. Logs are found in Kudu -> LogFiles -> {ShortId}-{pid}-xxx
+1. Recycle actualy kills and restarts. This means Global.Application_End is never called
+1. "type": "sourcecontrols" is not part of ARM Templates as [described][5], but is actualy a part of [Slingshot][10].
+1. There are a lot of [examples][7], but making the resources manualy then using the [resources preview site][11] seems simpiler.
+1. [Deploy to Azure][2] does not work on subscriptions where your permission is "co-admin".
 
 [//]: Refrences
 [1]: http://stackoverflow.com/questions/35989437/azure-memory-resource-exhausted
